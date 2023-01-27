@@ -3,17 +3,34 @@ let computerChoice = "";
 let playerInput = "";
 let playerChoice = "";
 
+const buttons = document.querySelectorAll('button');
+
+const results = document.querySelector('#results');
+
+const playerSees = document.createElement('div')
+playerSees.classList.add('playerSees');
+
+buttons.forEach((button) => {
+button.addEventListener('click', () =>{
+playerChoice = button.id;
+game();
+})
+})
+
 function getComputerChoice() {
     numberPicker = Math.random();
 
-    if (numberPicker < .33){
-        computerChoice = "Rock"
+    if (numberPicker < .33) {
+        computerChoice = "Rock";
+        console.log(numberPicker);
     }
     else if (numberPicker >.32 && numberPicker < .66) {
-        computerChoice = "Paper"
+        computerChoice = "Paper";
+        console.log(numberPicker);
     }
     else {
-        computerChoice = "Scissors"
+        computerChoice = "Scissors";
+        console.log(numberPicker);
     }
 }
 
@@ -35,31 +52,40 @@ function getPlayerChoice() {
 
     function gameSetup(computerPick, humanPick) {
         if (computerPick == "Rock" && humanPick == "Rock"){
-            return console.log("Good old rock. Nothing beats rock. A tie!")
+             playerSees.textContent = 'Good old rock. Nothing beats rock. A tie!';
+             return results.appendChild(playerSees);
         }
         if (computerPick == "Rock" && humanPick == "Paper"){
-            return console.log("They picked rock. You picked paper. You are a winner! Hot dog!")
+             playerSees.textContent = 'They picked rock. You picked paper. You are a winner! Hot dog!';
+             return results.appendChild(playerSees);
         }
         if (computerPick == "Rock" && humanPick == "Scissors"){
-            return console.log("They picked rock. You picked scissors. Can you see how you shamed yourself?")
+             playerSees.textContent = 'They picked rock. You picked scissors. Can you see how you shamed yourself?';
+             return results.appendChild(playerSees);
         }
         if (computerPick == "Paper" && humanPick == "Rock"){
-            return console.log("They picked paper. You picked rock. Can you see how you shamed yourself?")
+            playerSees.textContent = "They picked paper. You picked rock. Can you see how you shamed yourself?";
+            return results.appendChild(playerSees);
         }
         if (computerPick == "Paper" && humanPick == "Paper"){
-            return console.log("They picked paper. You picked paper. Everyone loves paper!")
+            playerSees.textContent ="They picked paper. You picked paper. Everyone loves paper!";
+            return results.appendChild(playerSees);
         }
         if (computerPick == "Paper" && humanPick == "Scissors"){
-            return console.log("They picked paper. You picked scissors. You are a winner. Hot dog!")
+            playerSees.textContent ="They picked paper. You picked scissors. You are a winner. Hot dog!";
+            return results.appendChild(playerSees);
         }
         if (computerPick == "Scissors" && humanPick == "Paper"){
-            return console.log("They picked scissors. You picked paper. Can you see how you shamed yourself?")
+            playerSees.textContent ="They picked scissors. You picked paper. Can you see how you shamed yourself?";
+            return results.appendChild(playerSees);
         }
         if (computerPick == "Scissors" && humanPick == "Scissors"){
-            return console.log("They picked scissors. You picked scissors. Stay sharp!")
+            playerSees.textContent ="They picked scissors. You picked scissors. Stay sharp!";
+            return results.appendChild(playerSees);
         }
         if (computerPick == "Scissors" && humanPick == "Rock"){
-            return console.log("They picked scissors. You picked rock. You are a winner! Hot dog!")
+            playerSees.textContent ="They picked scissors. You picked rock. You are a winner! Hot dog!";
+            return results.appendChild(playerSees);
         }
         else {
             return console.log("Still working on that!")
@@ -67,14 +93,12 @@ function getPlayerChoice() {
     }
 
 function game(){
-    for (let i = 0; i < 5; i++){
-getPlayerChoice();
+    
+
 getComputerChoice();
 gameSetup(computerChoice, playerChoice);
-    }
+    
 }
-
-game();
 
 
 
